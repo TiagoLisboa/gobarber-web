@@ -1,0 +1,25 @@
+# ./.tmuxinator.yml
+
+name: gobarberweb
+root: ~/dev/gobarber/web-app/
+
+windows:
+  - editor: vim .
+  - git:
+    - git fetch
+    - git status
+  - api:
+      root: ~/dev/gobarber/api/
+      panes:
+        - dev:
+          - docker start database
+          - docker start mongobarber
+          - docker start redisbarber
+          - yarn dev
+        - queue:
+          - yarn queue
+  - web:
+      panes:
+        - yarn start
+        - yarn test
+

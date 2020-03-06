@@ -5,14 +5,19 @@ import * as Yup from 'yup';
 
 import logo from '../../assets/img/gobarber_logo.svg';
 
+// import { Container } from './style';
+
 const schema = Yup.object().shape({
+  name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
     .email('Insira um e-mail válido')
     .required('O e-mail é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória'),
+  password: Yup.string()
+    .min(6, 'Mínimo de 6 caracteres')
+    .required('A senha é obrigatória'),
 });
 
-export default function SingIn() {
+export default function SignUp() {
   function handleSubmit(data) {
     console.tron.log(data);
   }
@@ -22,6 +27,7 @@ export default function SingIn() {
       <img src={logo} alt="GoBarber" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
+        <Input name="name" placeholder="Seu nome completo" />
         <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input
           name="password"
@@ -29,8 +35,8 @@ export default function SingIn() {
           placeholder="Sua senha secreta"
         />
 
-        <button type="submit">Acessar</button>
-        <Link to="/register">Criar conta gratuita</Link>
+        <button type="submit">Criar conta</button>
+        <Link to="/">Já tenho login</Link>
       </Form>
     </>
   );

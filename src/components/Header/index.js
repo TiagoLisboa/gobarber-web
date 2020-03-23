@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Notifications from '../Notifications';
+
 import { Container, Content, Profile } from './style';
 
 import logo from '../../assets/img/gobarber_logo_purple.svg';
@@ -15,6 +17,8 @@ export default function Header() {
         </nav>
 
         <aside>
+          <Notifications />
+
           <Profile>
             <div>
               <strong>Tiago Lisboa</strong>

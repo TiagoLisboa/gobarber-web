@@ -55,8 +55,6 @@ export default function Notifications() {
     );
   }
 
-  console.log(notifications);
-
   return (
     <Container>
       <Badge hasUnread={hasUnread} onClick={toggleNotificationList}>
